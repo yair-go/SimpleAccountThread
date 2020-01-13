@@ -18,8 +18,8 @@ namespace SimpleAccount
         {
             this.balance = initBalance;
             this.interestRate = interestRate;
-
-            interestLoop();
+            Thread th = new Thread(interestLoop);
+            th.Start();
         }
 
         #region Interest
@@ -37,6 +37,7 @@ namespace SimpleAccount
             {
                 applyInterest();
                 Thread.Sleep(3000); // 3000 milliseconds
+                
             }
         }
         #endregion
